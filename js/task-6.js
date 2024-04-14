@@ -22,21 +22,28 @@
     }
 
     function createBoxes(amount) {
-      destroyBoxes(); 
-      for (let i = 0; i < amount; i++) {
-        const size = 30 + i * 10;
-        const box = document.createElement('div');
-        box.classList.add('box');
-        box.style.width = `${size}px`;
-        box.style.height = `${size}px`;
-        box.style.backgroundColor = getRandomHexColor();
-        boxesContainer.appendChild(box);
-      }
-    }
+  destroyBoxes(); 
+  const fragment = document.createDocumentFragment(); 
+
+  for (let i = 0; i < amount; i++) {
+    const size = 30 + i * 10;
+    const box = document.createElement('div');
+    box.classList.add('box');
+    box.style.width = `${size}px`;
+    box.style.height = `${size}px`;
+    box.style.backgroundColor = getRandomHexColor();
+    fragment.appendChild(box); 
+  }
+
+  boxesContainer.appendChild(fragment); 
+}
 
     function destroyBoxes() {
       boxesContainer.innerHTML = '';
     }
 
     createButton.addEventListener('click', onCreateButtonClick);
-    destroyButton.addEventListener('click', onDestroyButtonClick);
+destroyButton.addEventListener('click', onDestroyButtonClick);
+    
+
+
